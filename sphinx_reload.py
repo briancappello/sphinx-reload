@@ -95,16 +95,20 @@ class SphinxServer:
 
 
 def _parse_cli_args():
-    parser = argparse.ArgumentParser(prog="sphinx-reload")
-    parser.add_argument(
-        '--version',
-        action='version',
-        version=f'v{__version__}',
+    parser = argparse.ArgumentParser(
+        prog="sphinx-reload",
+        usage='sphinx-reload <documentation_root> [--build-dir <build_dir>] '
+              '[--watch "pattern1" "patternN"] [--host <host>] [--port <port>]',
     )
     parser.add_argument(
         "documentation_root",
         help="Your documentation's root directory "
              "(i.e. where `sphinx-build` put the Makefile).",
+    )
+    parser.add_argument(
+        '--version',
+        action='version',
+        version=f'v{__version__}',
     )
     parser.add_argument(
         "--build-dir",
